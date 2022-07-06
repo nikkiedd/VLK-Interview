@@ -1,0 +1,7 @@
+<form [formGroup]="buyingForm" (ngSubmit)="onSubmit()">
+
+    <span>Buy <input id="numberInput" type="number"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" formControlName="numberOfStocks"> Apple stocks</span> <br>
+ 
+    <button mat-raised-button class="button" id="executeBtn" type="submit">Execute order</button>
+  
+</form>

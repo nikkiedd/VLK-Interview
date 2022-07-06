@@ -1,0 +1,13 @@
+form {
+  text-align: center;
+}
+
+#numberInput {
+  margin-top: 10%;
+}
+
+#executeBtn {
+  margin-top: 10%;
+  margin: 10% auto;
+  display: block;
+}
