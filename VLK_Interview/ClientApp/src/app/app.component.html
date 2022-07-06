@@ -1,0 +1,27 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img width="40"
+       alt="Van Lanschot Kempen Logo"
+       src="../assets/vlk-logo.png" />
+  <span>Buy Apple stocks with Van Lanschot Kempen</span>
+  <div class="spacer"></div>
+
+</div>
+
+<div class="content" role="main">
+  <div>
+    <h1>Hello, {{ account.name }}!</h1>
+    <h2>Investment account balance: {{ account.balance }} EUR</h2>
+  </div>
+
+  <form [formGroup]="buyingForm" (ngSubmit)="onSubmit()">
+
+    <span>Buy <input formControlName="stocksNumber" id="stocksNumber" name="stocksNumber" type="number" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"> Apple stocks</span> <br>
+
+    <button mat-raised-button class="button" [disabled]="!buyingForm.valid" id="executeBtn" type="submit">Execute order</button>
+
+  </form>
+
+</div>
+
+<router-outlet></router-outlet>
