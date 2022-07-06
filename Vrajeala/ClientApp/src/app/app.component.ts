@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AccountService } from './services/account.service';
 import { ClientAccount } from './models/client-account.model';
 import { Guid } from 'guid-typescript';
@@ -16,7 +16,7 @@ export class AppComponent {
   title = 'app';
 
   buyingForm = this.formBuilder.group({
-    stocksNumber: '',
+    stocksNumber: new FormControl("", [Validators.required]),
   });
   account: ClientAccount = { id: Guid.createEmpty(), name: "", balance: 0 };
   stockId: Guid = Guid.createEmpty();
@@ -47,7 +47,7 @@ export class AppComponent {
   }
 
   onSubmit(): void {
-    // Process checkout data here
+    // process checkout data here
     var requestedStocks = this.buyingForm.get('stocksNumber')?.value;
     console.log(requestedStocks);
     this.stockService.getStockPrice(this.stockId).subscribe(response => {

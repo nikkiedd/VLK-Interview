@@ -33,7 +33,6 @@ export class AccountService {
   placeOrder(clientId: Guid, stockId: Guid, requestedStocks: number): Observable<number> {
     var transaction: Transaction = { 'clientId': clientId, 'stockId': stockId, 'numberOfStocks': requestedStocks };
     return this.http.post<number>(this.baseUrl + 'stock', transaction);
-    // if the order was successful, decrease the client's balance - doing this on the backend now
   }
 
 
