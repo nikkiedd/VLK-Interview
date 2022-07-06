@@ -1,11 +1,11 @@
 {
-  "name": "vrajeala",
+  "name": "VLK-Interview",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 44496",
     "build": "ng build",
-    "build:ssr": "ng run Vrajeala:server:dev",
+    "build:ssr": "ng run VLK-Interview:server:dev",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -16,7 +16,6 @@
     "@angular/compiler": "~13.3.5",
     "@angular/core": "~13.3.5",
     "@angular/forms": "~13.3.5",
-    "@angular/material": "^14.0.4",
     "@angular/platform-browser": "~13.3.5",
     "@angular/platform-browser-dynamic": "~13.3.5",
     "@angular/platform-server": "~13.3.5",

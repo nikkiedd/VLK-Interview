@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Vrajeala": {
+    "VLK-Interview": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Vrajeala:build:production"
+              "browserTarget": "VLK-Interview:build:production"
             },
             "development": {
-              "browserTarget": "Vrajeala:build:development",
+              "browserTarget": "VLK-Interview:build:development",
               "proxyConfig": "proxy.conf.js"
             }
           },
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Vrajeala:build"
+            "browserTarget": "VLK-Interview:build"
           }
         },
         "test": {
@@ -132,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "Vrajeala"
+  "defaultProject": "VLK-Interview"
 }

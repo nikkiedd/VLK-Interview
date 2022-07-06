@@ -49,7 +49,6 @@ export class AppComponent {
   onSubmit(): void {
     // process checkout data here
     var requestedStocks = this.buyingForm.get('stocksNumber')?.value;
-    console.log(requestedStocks);
     this.stockService.getStockPrice(this.stockId).subscribe(response => {
       var stockPrice = response;
       var value = stockPrice * requestedStocks;
