@@ -17,13 +17,32 @@ namespace VLK_Interview.Controllers
             this.clientRepository = clientRepository;
         }
 
+        // GET account
+        /// <summary>  
+        /// Get the account of the client
+        /// (a bit of a work-around; we would of course not have this
+        /// in an application with multiple clients)
+        /// </summary>  
+        /// <returns> the client as a ClientAccount object </returns>  
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetAccount() {
             ClientAccount client = this.clientRepository.GetOnlyClient();
             return Ok(client);
         }
 
+        // GET account/clientId
+        /// <summary>  
+        /// Get the account of the client with the given id
+        /// <param name="clientId"> the client id</param>  
+        /// </summary>  
+        /// <returns>
+        /// the client as a ClientAccount object, if found
+        /// 404 otherwise
+        /// </returns>  
         [HttpGet("{clientId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetClientAccount(Guid clientId) {
             // TODO: Absolutely change this
             ClientAccount? client = clientRepository.GetClient(clientId);

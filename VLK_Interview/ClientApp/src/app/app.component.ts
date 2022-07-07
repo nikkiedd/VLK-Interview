@@ -71,7 +71,13 @@ export class AppComponent {
 
   placeOrder(requestedStocks: number) {
     this.accountService.placeOrder(this.account.id, this.stockId, requestedStocks).subscribe(response => {
-      this.account.balance = response;
+      if (response != null) {
+        this.account.balance = response;
+        alert("The purchase was successful!");
+      }
+      else {
+        alert("The purchase was not succcessful.");
+      }
     });
   }
 }

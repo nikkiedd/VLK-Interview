@@ -18,9 +18,18 @@ namespace VLK_Interview.Controllers
         }
 
         // GET stock
-        // Return the stockId of the stock with the given name
+        /// <summary>  
+        /// Get the id of the stock with the given name
+        /// </summary>  
+        /// <param name="stockName"> the name of the stock</param>  
+        /// <returns>
+        /// the id of the stock with the given name, if found
+        /// 404 if not found
+        /// </returns>  
         [HttpGet]
         [Route("{stockName:alpha}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetStockId(string stockName) {
             Guid? stockId = stockRepository.GetId(stockName);
             if (stockId == null)
@@ -29,10 +38,20 @@ namespace VLK_Interview.Controllers
                 return Ok(stockId);
         }
 
-       // GET stock/stockId
-       // Returns the price of a given number of Apple stocks
-       [HttpGet("{stockId}")]
-       [Route("{stockId:guid}")]
+
+        // GET stock/stockId
+        /// <summary>  
+        /// Get the price of a stock with the given id
+        /// </summary>  
+        /// <param name="stockId"> the id of the stock</param>  
+        /// <returns>
+        /// the price of the stock with the given id, if found
+        /// 404 if not found
+        /// </returns>  
+        [HttpGet("{stockId}")]
+        [Route("{stockId:guid}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetStockPrice(Guid stockId)
         {
             float? stockPrice = this.stockRepository.GetPrice(stockId);
@@ -45,8 +64,19 @@ namespace VLK_Interview.Controllers
         }
 
         // POST stock
-        // Buy a given number of Apple stocks
+        /// <summary>  
+        /// Buy a given number of stocks with the given id, for the client with the given id
+        /// </summary>  
+        /// <param name="transaction"> 
+        /// Transaction object containing the stock id, the client id and the number of stocks
+        /// </param>  
+        /// <returns>
+        /// the updated of the client with the given id, if purchase is successful
+        /// 404 if client or stock not found
+        /// </returns>  
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult BuyStocks([FromBody] Transaction transaction)
         {
             Guid clientId = transaction.ClientId;
