@@ -9,7 +9,7 @@ namespace VLK_Interview.Repositories
         public StockRepository() {
 
             this.stocks = new List<Stock>();
-            Stock appleStock = new Stock("Apple", 330);
+            Stock appleStock = new Stock("Apple", 143);
             this.stocks.Add(appleStock);
         }
 
@@ -23,6 +23,7 @@ namespace VLK_Interview.Repositories
         }
 
         public float? GetPrice(Guid id) {
+            // ideally, I would call an API to get the real-time market value of the stock
             Stock? stock = stocks.Find(stock => stock.Id == id);
             if (stock is null)
                 return null;
